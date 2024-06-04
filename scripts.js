@@ -47,6 +47,10 @@ function addExpense(newExpense){
     expenseIcon.setAttribute("src", `img/${newExpense.category_id}.svg`);
     expenseIcon.setAttribute("alt", newExpense.category_name);
 
+    const expenseAmount = document.createElement("span");
+    expenseAmount.classList.add("expense-amount")
+    expenseAmount.innerHTML = `<small>R$</small> ${newExpense.amount.toUpperCase().replace("R$", "")}`
+
     const expenseInfo = document.createElement("div");
     expenseInfo.classList.add("expense-info");
 
@@ -58,7 +62,7 @@ function addExpense(newExpense){
 
     expenseInfo.append(expenseName, expenseCategory);
 
-    expenseItem.append(expenseIcon, expenseInfo);
+    expenseItem.append(expenseIcon, expenseInfo, expenseAmount);
 
     expenseList.append(expenseItem);
 
